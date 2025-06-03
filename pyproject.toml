@@ -1,0 +1,44 @@
+[project]
+name = "ff14-cut-tree"
+version = "0.1.0"
+description = ""
+authors = [
+    { name = "AsterCasc", email = "astercass@qq.com" }
+]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "keyboard>=0.13.5",
+    "opencv-python>=4.11.0.86",
+    "pillow>=11.2.1",
+    "pytesseract>=0.3.13",
+    "pywin32>=310",
+]
+
+[tool.poetry]
+packages = [{ include = "ff14_cut_tree", from = "src" }]
+
+[tool.poetry.scripts]
+app = "ff14_cut_tree.__main__:main"
+
+[[tool.poetry.source]]
+name = "mirrors"
+url = "https://pypi.tuna.tsinghua.edu.cn/simple/"
+priority = "primary"
+
+[[tool.uv.index]]
+url = "https://mirrors.cloud.tencent.com/pypi/simple/"
+default = true
+
+[tool.uv.pip]
+index-url = "https://mirrors.cloud.tencent.com/pypi/simple/"
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "pyinstaller>=6.13.0",
+]
