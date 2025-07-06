@@ -93,9 +93,10 @@ def get_arrow(frame):
     # 转换为灰度图
     gray = cv2.cvtColor(cropped, cv2.COLOR_BGR2GRAY)
     # 阈值处理，提取白色区域
-    _, thresh = cv2.threshold(gray, 240, 255, cv2.THRESH_BINARY)
+    _, thresh = cv2.threshold(gray, 240, 255, cv2.THRESH_BINARY) # 240 是一个较高的阈值，提取亮色区域
     # 查找轮廓
     contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    # contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)  # 使用更简单的轮廓算法
     # 找到最大的白色区域（假设箭头是最显眼的白色物体）
     if contours:
         largest_contour = max(contours, key=cv2.contourArea)
